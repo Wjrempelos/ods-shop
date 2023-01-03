@@ -1,8 +1,14 @@
-import { useState } from 'react';
+import { useState} from 'react';
+
 import FormInput from '../form-input/form-input';
-import { createAuthuserWithEmailAndPassword, createUserDocumentFromAuth } from '../../utils/firebase/firebase';
-import './sign-up-form.scss'
 import Button from '../button/button';
+
+import { 
+    createAuthuserWithEmailAndPassword, 
+    createUserDocumentFromAuth 
+} from '../../utils/firebase/firebase';
+
+import './sign-up-form.scss'
 
 
 const defaultFormFields = {
@@ -16,8 +22,6 @@ const SignUpForm = () => {
     const [formFields, setFormFields] = useState(defaultFormFields);
     const {displayName, email, password, confirmPassword} = formFields;
 
-    console.log(formFields)
-
     const resetFormFields = () => {
         setFormFields(defaultFormFields);
     }
@@ -25,7 +29,7 @@ const SignUpForm = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        if (password != confirmPassword) {
+        if (password !== confirmPassword) {
            alert("passwords do not match");
            return;
         } 
@@ -34,7 +38,8 @@ const SignUpForm = () => {
             const { user } = await createAuthuserWithEmailAndPassword(
                 email,
                 password
-            );           
+            );
+
             await createUserDocumentFromAuth(user, { displayName });
             resetFormFields();
         } catch(error) {

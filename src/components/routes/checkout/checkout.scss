@@ -1,0 +1,38 @@
+.checkout-container {
+    height: 100%;
+    
+    .checkout-items-container {
+        display: flex;
+        padding: 10px;
+        height: 100%;
+
+        .checkout-items {
+            display: flex;
+            height: 100%;
+            flex-direction: column;
+            width: 100%;
+            align-items: center;
+            
+        }
+    }
+
+    .column-titles {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        padding: 15px;
+        border-bottom: 2px solid;
+        border-color: gray;
+        text-align: center;
+
+    }
+
+    .item-subtotal {
+        display: grid;
+        padding: 15px;
+        grid-template-columns: 1fr;
+        height: 100%;
+        justify-items: end;
+        font-weight: bolder;
+    }
+
+}
